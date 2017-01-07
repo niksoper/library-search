@@ -1,0 +1,22 @@
+{
+  "name": "library-search",
+  "version": "1.0.0",
+  "description": "Searches www.librarieswest.org.uk",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niksoper/library-search.git"
+  },
+  "author": "Nicholas Soper",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/niksoper/library-search/issues"
+  },
+  "homepage": "https://github.com/niksoper/library-search#readme",
+  "dependencies": {
+    "jsdom": "^9.9.1"
+  }
+}
