@@ -1,7 +1,8 @@
 const jsdom = require('jsdom')
 
 module.exports = {
-  byTitle: byTitle
+  byTitle: byTitle,
+  takeFirst: takeFirstResult,
 }
 
 function byTitle(term, callback) {
@@ -26,4 +27,15 @@ function reportResults(window) {
   return window.jQuery('#results_wrapper a')
     .toArray()
     .map(l => l.href)
+}
+
+function takeFirstResult(results) {
+  const bookAddress = results[0]
+
+  if (!bookAddress) {
+    console.log('No results')
+    process.exit()
+  }
+
+  return bookAddress
 }
