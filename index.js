@@ -1,17 +1,19 @@
+console.log('Loading...')
 var jsdom = require("jsdom")
 
-var url = 'https://iojs.org/dist/'
+var url = 'https://www.librarieswest.org.uk/client/en_GB/default/search/results?qu=maddaddam&te=ILS&lm=BOOK&rt=false%7C%7C%7CTITLE%7C%7C%7CTitle' 
+var scripts = ["http://code.jquery.com/jquery.js"]
 
-console.log('Requesting ' + url)
+console.log(`Requesting  ${url}\n`)
 
 try {
   jsdom.env(
     url,
-    ["http://code.jquery.com/jquery.js"],
+    scripts, 
     function (err, window) {
-      console.log('err', err)
-      console.log('window', !!window)
-      console.log("there have been", window.$("a").length - 4, "io.js releases!")
+      var results = window.jQuery('#results_wrapper a').toArray().map(l => l.href)
+      console.log(`${results.length} results`)
+      console.log(results)
     }
   );
 } catch(e) {
