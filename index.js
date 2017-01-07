@@ -1,5 +1,4 @@
-
-var term = process.argv[2]
+var term = getTerm()
 
 if (!term) {
   console.log('No search term!')
@@ -16,9 +15,15 @@ try {
   console.log('caught', e)
 }
 
+function getTerm() {
+  return process.argv.slice(2).join('%20')
+}
+
 function search(term) {
   var url = `https://www.librarieswest.org.uk/client/en_GB/default/search/results?qu=${term}&te=ILS&lm=BOOK&rt=false%7C%7C%7CTITLE%7C%7C%7CTitle` 
   var scripts = ['http://code.jquery.com/jquery.js']
+
+  console.log(`Searching for ${term}...`)
 
   jsdom.env(
     url,
