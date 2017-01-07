@@ -8,9 +8,12 @@ if (!term) {
 console.log('Loading...')
 
 const search = require('./search')
+const book = require('./book')
 
-search.byTitle(term)
+search
+  .byTitle(term)
   .then(search.takeFirstOrExit)
+  .then(book.getAvailability)
   .then(console.log)
   .catch(err => {
     console.log('ERROR:', err)
