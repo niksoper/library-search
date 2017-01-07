@@ -10,7 +10,7 @@ console.log('Loading...')
 const search = require('./search')
 
 search.byTitle(term)
-  .then(search.takeFirst)
+  .then(search.takeFirstOrExit)
   .then(console.log)
   .catch(err => {
     console.log('ERROR:', err)

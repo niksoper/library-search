@@ -1,8 +1,8 @@
 const jsdom = require('jsdom')
 
 module.exports = {
-  byTitle: byTitle,
-  takeFirst: takeFirstResult,
+  byTitle,
+  takeFirstOrExit,
 }
 
 function byTitle(term, callback) {
@@ -29,13 +29,13 @@ function reportResults(window) {
     .map(l => l.href)
 }
 
-function takeFirstResult(results) {
-  const bookAddress = results[0]
+function takeFirstOrExit(results) {
+  const first = results[0]
 
-  if (!bookAddress) {
+  if (!first) {
     console.log('No results')
     process.exit()
   }
 
-  return bookAddress
+  return first
 }
