@@ -1,36 +1,22 @@
-const jsdom = require('jsdom')
+const api = require('./api')
 
 module.exports = {
   getAvailability
 }
 
 function getAvailability(bookUrl) {
-  const scripts = ['http://code.jquery.com/jquery.js']
-
   console.log(`Getting availability...`)
 
-  return new Promise((resolve, reject) => {
-    jsdom.env(
-      bookUrl,
-      scripts, 
-      (err, window) => {
-        if (err) reject(err)
-        else setTimeout(() => {
-          resolve(findAvailability(window))
-        }, 1000)
-      }
-    )
-  })
+  return api
+    .get(bookUrl)
+    .then(api.ready)
+    .then(findAvailability)
 }
 
-function findAvailability({ jQuery, document}) {
-  return new Promise((resolve, reject) => {
-    jQuery(document).ready(() => {
-       const availability = jQuery('.availabilityDiv')
-        .toArray()
-        .map(element => element.innerHTML)
+function findAvailability({ jQuery }) {
+  const availability = jQuery('.availabilityDiv')
+    .toArray()
+    .map(element => element.innerHTML)
       
-       resolve(availability)
-    })
-  }) 
+  return availability
 }
