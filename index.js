@@ -1,8 +1,14 @@
+
+var term = process.argv[2]
+
+if (!term) {
+  console.log('No search term!')
+  process.exit()
+}
+
 console.log('Loading...')
 
 var jsdom = require('jsdom')
-
-var term = process.argv[2]
 
 try {
   search(term)
