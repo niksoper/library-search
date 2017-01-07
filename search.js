@@ -10,14 +10,20 @@ function byTitle(term, callback) {
 
   console.log(`Searching for ${term}...`)
 
-  jsdom.env(
-    url,
-    scripts, 
-    (err, window) => reportResults(window, callback)
-  )
+  return new Promise((resolve, reject) => {
+    jsdom.env(
+      url,
+      scripts, 
+      (err, window) => {
+        if (err) reject(err)
+        else resolve(reportResults(window))
+      }
+    )
+  })
 }
 
-function reportResults(window, callback) {
-  const results = window.jQuery('#results_wrapper a').toArray().map(l => l.href)
-  callback(results)
+function reportResults(window) {
+  return window.jQuery('#results_wrapper a')
+    .toArray()
+    .map(l => l.href)
 }

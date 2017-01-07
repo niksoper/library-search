@@ -9,11 +9,11 @@ console.log('Loading...')
 
 const search = require('./search')
 
-try {
-  search.byTitle(term, results => {
+search.byTitle(term)
+  .then(results => {
     console.log(`${results.length} results`)
     console.log(results)
   })
-} catch(e) {
-  console.log('caught', e)
-}
+  .catch(err => {
+    console.log('SEARCH ERROR:', err)
+  })
