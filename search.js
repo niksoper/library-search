@@ -23,10 +23,15 @@ function byTitle(term, callback) {
   })
 }
 
-function reportResults(window) {
-  return window.jQuery('#results_wrapper a')
-    .toArray()
-    .map(l => l.href)
+function reportResults({ jQuery, document}) {
+  return new Promise((resolve, reject) => {
+    jQuery(document).ready(() => {
+      const urls = jQuery('#results_wrapper a')
+        .toArray()
+        .map(l => l.href)
+      resolve(urls)
+    })
+  }) 
 }
 
 function takeFirstOrExit(results) {
