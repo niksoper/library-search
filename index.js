@@ -16,7 +16,7 @@ try {
 }
 
 function getTerm() {
-  return process.argv.slice(2).join('%20')
+  return process.argv.slice(2).join('+')
 }
 
 function search(term) {
