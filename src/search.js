@@ -1,4 +1,5 @@
 const api = require('./api')
+const select = require('./select')
 
 module.exports = {
   byTitle,
@@ -11,14 +12,14 @@ function byTitle(term, callback) {
   console.log(`Searching for ${term}...`)
 
   return api.get(url)
-    .then(api.ready)
     .then(reportResults)
 }
 
-function reportResults({ jQuery }) {
-  const urls = jQuery('#results_wrapper a')
-    .toArray()
-    .map(l => l.href)
+function reportResults({ document }) {
+  const urls = select(document)(
+    '#results_wrapper a',
+    element => element.href
+  )
 
   return urls
 }

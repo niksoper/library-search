@@ -1,4 +1,5 @@
 const api = require('./api')
+const select = require('./select')
 
 module.exports = {
   getAvailability
@@ -9,14 +10,14 @@ function getAvailability(bookUrl) {
 
   return api
     .get(bookUrl)
-    .then(api.ready)
     .then(findAvailability)
 }
 
-function findAvailability({ jQuery }) {
-  const availability = jQuery('.availabilityDiv')
-    .toArray()
-    .map(element => element.innerHTML)
+function findAvailability({ document }) {
+  const availability = select(document)(
+    '.availabilityDiv',
+    element => element.innerHTML
+  )
       
   return availability
 }
