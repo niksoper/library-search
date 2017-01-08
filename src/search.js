@@ -1,4 +1,4 @@
-const api = require('./api')
+const browser = require('./browser')
 const select = require('./select')
 
 module.exports = {
@@ -11,7 +11,7 @@ function byTitle(term, callback) {
 
   console.log(`Searching for ${term}...`)
 
-  return api.get(url)
+  return browser.get(url)
     .then(reportResults)
 }
 

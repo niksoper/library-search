@@ -1,4 +1,4 @@
-const api = require('./api')
+const browser = require('./browser')
 const select = require('./select')
 
 module.exports = {
@@ -8,7 +8,7 @@ module.exports = {
 function getAvailability(bookUrl) {
   console.log(`Getting availability...`)
 
-  return api
+  return browser
     .get(bookUrl)
     .then(findAvailability)
 }
