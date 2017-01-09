@@ -7,9 +7,11 @@ if (!term) {
 
 console.log('Loading...')
 
+//const news = require('./hacker-news')
+//news.getLinkText().then(console.log)
+
 const search = require('./search')
 const book = require('./book')
-
 search
   .byTitle(term)
   .then(search.takeFirstOrExit)

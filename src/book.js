@@ -9,11 +9,10 @@ function getAvailability(bookUrl) {
 
   return api
     .get(bookUrl)
-    .then(api.ready)
     .then(findAvailability)
 }
 
-function findAvailability({ jQuery }) {
+function findAvailability(jQuery) {
   const availability = jQuery('.availabilityDiv')
     .toArray()
     .map(element => element.innerHTML)

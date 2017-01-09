@@ -1,28 +1,12 @@
-const jsdom = require('jsdom')
+const scraperjs = require('scraperjs')
 
 module.exports = {
-  get,
-  ready
+  get: get
 }
-
-const scripts = ['http://code.jquery.com/jquery.js']
 
 function get(url) {
   return new Promise((resolve, reject) => {
-    jsdom.env(
-      url,
-      scripts, 
-      (err, window) => {
-        if (err) reject(err)
-        else resolve(window)
-      }
-    )
+    scraperjs.StaticScraper.create('https://news.ycombinator.com/')
+      .scrape(resolve)
   })
-}
-
-function ready(window) {
-  const { jQuery, document } = window
-  return new Promise(resolve => {
-    jQuery(document).ready(() => resolve(window))
-  }) 
 }

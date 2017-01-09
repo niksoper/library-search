@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/niksoper/library-search#readme",
   "dependencies": {
-    "jsdom": "^9.9.1"
+    "jsdom": "^9.9.1",
+    "scraperjs": "^1.2.0"
   }
 }

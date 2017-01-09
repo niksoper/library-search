@@ -11,16 +11,21 @@ function byTitle(term, callback) {
   console.log(`Searching for ${term}...`)
 
   return api.get(url)
-    .then(api.ready)
     .then(reportResults)
 }
 
-function reportResults({ jQuery }) {
+function reportResults1(jQuery) {
   const urls = jQuery('#results_wrapper a')
     .toArray()
-    .map(l => l.href)
-
+    .map(l => jQuery(l).text())
+  
   return urls
+}
+
+function reportResults($) {
+  return $('#results_wrapper a').map(function() {
+    return $(this)//.attr('href')
+  }).get()
 }
 
 function takeFirstOrExit(results) {
