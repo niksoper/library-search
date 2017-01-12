@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/niksoper/library-search#readme",
   "dependencies": {
-    "jsdom": "^9.9.1"
+    "jsdom": "^9.9.1",
+    "request-promise": "^4.1.1"
   }
 }
