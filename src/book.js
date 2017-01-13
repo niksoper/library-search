@@ -6,10 +6,11 @@ module.exports = {
   getAvailability
 }
 
-function getAvailability(bookUrl) {
+function getAvailability(bookUrls) {
+  console.log('Using first match')
   console.log(`Getting availability...`)
 
-  const fullUrl = `${importUri}&url=${encodeURI(bookUrl)}`
+  const fullUrl = `${importUri}&url=${encodeURI(bookUrls[0])}`
   
   return request
     .getJson(fullUrl)

@@ -10,9 +10,15 @@ console.log('Loading...')
 const search = require('./search')
 const book = require('./book')
 
+const logAndPassThrough = message => d => {
+  console.log(message)
+  console.log(d)
+  return d
+}
+
 search
   .byTitle(term)
-  .then(search.takeFirstOrExit)
+  .then(search.matchExactTitle(term))
   .then(book.getAvailability)
   .then(console.log)
   .catch(err => {
