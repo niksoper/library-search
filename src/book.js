@@ -27,9 +27,15 @@ function singleAvailability(bookUrl) {
           status: row['Status value'][0].text,
         }
       ))
+      .filter(interestingStatus)
     ))
 }
 
 function inFavouriteLibraries(availability) {
   return availability.filter(a => favourites.some(l => l === a.library))
+}
+
+function interestingStatus(availability) {
+  const status = availability.status
+  return (status === 'On Shelf' || status.startsWith('Due '))
 }
