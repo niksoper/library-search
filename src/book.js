@@ -6,6 +6,7 @@ module.exports = {
   getAvailability,
   inFavouriteLibraries,
   isOnShelf,
+  byUrl,
 }
 
 function getAvailability(bookUrls) {
@@ -24,6 +25,7 @@ function singleAvailability(bookUrl) {
     .then(response => (
       response.extractorData.data[0].group.map(row => (
         {
+          url: bookUrl,
           library: row['Library value'][0].text,
           status: row['Status value'][0].text,
         }
@@ -41,7 +43,11 @@ function interestingStatus(availability) {
 }
 
 function isOnShelf(availabilities) {
-  return availabilities.filter(onShelf)
+  const shelved = availabilities.filter(onShelf)
+  
+  console.log(`On the shelf: ${shelved.length}`)
+  
+  return shelved
 }
 
 function onShelf(availability) {
@@ -50,4 +56,14 @@ function onShelf(availability) {
 
 function isDue(availability) {
   return availability.status.startsWith('Due ')
+}
+
+function byUrl(availabilities) {
+  return _.chain(availabilities)
+    .groupBy('url')
+    .map((books, url) => ({
+      url,
+      availability: books.map(book => _.omit(book, 'url'))
+    }))
+    .value()
 }

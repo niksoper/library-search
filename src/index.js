@@ -22,6 +22,8 @@ search
   .then(book.getAvailability)
   .then(book.inFavouriteLibraries)
   .then(book.isOnShelf)
+  .then(book.byUrl)
+  .then(JSON.stringify)
   .then(console.log)
   .catch(err => {
     console.log('ERROR:', err)
