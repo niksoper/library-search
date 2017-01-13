@@ -35,10 +35,15 @@ function singleAvailability(bookUrl) {
 }
 
 function inFavouriteLibraries(availability) {
+  console.log(`In all libraries: ${availability.length}`)
   console.log('Filtering on favourite libraries:')
   console.log(favourites)
   
-  return availability.filter(a => favourites.some(l => l === a.library))
+  const inFavourites = availability.filter(a => favourites.some(l => l === a.library))
+
+  console.log(`In favourite libraries: ${inFavourites.length}`)
+  
+  return inFavouriteLibraries
 }
 
 function interestingStatus(availability) {
