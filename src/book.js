@@ -1,10 +1,10 @@
 const _ = require('lodash')
 const request = require('./request')
-
-const importUri = 'https://extraction.import.io/query/extractor/1628e2be-0087-46ca-9fe3-1c23eb003470?_apikey=440e7c599cc244e5ae6b5275935704b8d39f5a2eb7ace86fb79deac135b000d93b2fdbb4f3ce694fa1906ad8424993f2ff73848f1408b4f52aa957078c7b4baf9ac1abede9339f0cfb9f0e257296a93f'
+const favourites = require('./libraries/favourites')
 
 module.exports = {
-  getAvailability
+  getAvailability,
+  inFavouriteLibraries,
 }
 
 function getAvailability(bookUrls) {
@@ -15,6 +15,7 @@ function getAvailability(bookUrls) {
 }
 
 function singleAvailability(bookUrl) {
+  const importUri = 'https://extraction.import.io/query/extractor/1628e2be-0087-46ca-9fe3-1c23eb003470?_apikey=440e7c599cc244e5ae6b5275935704b8d39f5a2eb7ace86fb79deac135b000d93b2fdbb4f3ce694fa1906ad8424993f2ff73848f1408b4f52aa957078c7b4baf9ac1abede9339f0cfb9f0e257296a93f'
   const fullUrl = `${importUri}&url=${encodeURI(bookUrl)}`
   
   return request
@@ -27,4 +28,8 @@ function singleAvailability(bookUrl) {
         }
       ))
     ))
+}
+
+function inFavouriteLibraries(availability) {
+  return availability.filter(a => favourites.some(l => l === a.library))
 }

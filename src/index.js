@@ -20,6 +20,7 @@ search
   .byTitle(term)
   .then(search.matchExactTitle(term))
   .then(book.getAvailability)
+  .then(book.inFavouriteLibraries)
   .then(console.log)
   .catch(err => {
     console.log('ERROR:', err)
