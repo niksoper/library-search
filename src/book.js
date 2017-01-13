@@ -7,10 +7,13 @@ module.exports = {
 }
 
 function getAvailability(bookUrls) {
-  console.log('Using first match')
   console.log(`Getting availability...`)
 
-  const fullUrl = `${importUri}&url=${encodeURI(bookUrls[0])}`
+  return Promise.all(bookUrls.map(singleAvailability))
+}
+
+function singleAvailability(bookUrl) {
+  const fullUrl = `${importUri}&url=${encodeURI(bookUrl)}`
   
   return request
     .getJson(fullUrl)
