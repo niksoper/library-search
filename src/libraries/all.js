@@ -9,7 +9,7 @@ module.exports = [
   },
   {
     "name":"Bedminster Library",
-    "favourite":false
+    "favourite":true
   },
   {
     "name":"Bishops Lydeard Library",
