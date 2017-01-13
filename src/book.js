@@ -35,6 +35,9 @@ function singleAvailability(bookUrl) {
 }
 
 function inFavouriteLibraries(availability) {
+  console.log('Filtering on favourite libraries:')
+  console.log(favourites)
+  
   return availability.filter(a => favourites.some(l => l === a.library))
 }
 
