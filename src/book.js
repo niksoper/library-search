@@ -5,6 +5,7 @@ const favourites = require('./libraries/favourites')
 module.exports = {
   getAvailability,
   inFavouriteLibraries,
+  isOnShelf,
 }
 
 function getAvailability(bookUrls) {
@@ -36,6 +37,17 @@ function inFavouriteLibraries(availability) {
 }
 
 function interestingStatus(availability) {
-  const status = availability.status
-  return (status === 'On Shelf' || status.startsWith('Due '))
+  return onShelf(availability) || isDue(availability)
+}
+
+function isOnShelf(availabilities) {
+  return availabilities.filter(onShelf)
+}
+
+function onShelf(availability) {
+  return availability.status === 'On Shelf'
+}
+
+function isDue(availability) {
+  return availability.status.startsWith('Due ')
 }

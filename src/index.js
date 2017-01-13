@@ -21,6 +21,7 @@ search
   .then(search.matchExactTitle(term))
   .then(book.getAvailability)
   .then(book.inFavouriteLibraries)
+  .then(book.isOnShelf)
   .then(console.log)
   .catch(err => {
     console.log('ERROR:', err)
