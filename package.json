@@ -2,13 +2,10 @@
   "name": "library-search",
   "version": "0.0.2",
   "description": "Searches www.librarieswest.org.uk",
-  "main": "src/index.js",
-  "bin": {
-    "library-search": "src/index.js"
-  },
+  "main": "src/search/findBooksInFavouriteLibraries.js",
   "scripts": {
     "start": "node src/run.js",
-    "patch": "npm version patch -m 'Patch release %s' && npm publish"
+    "patch": "npm version patch && npm publish"
   },
   "repository": {
     "type": "git",
