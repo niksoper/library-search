@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "node src/run.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "patch": "npm version patch -m 'Patch release %s' && npm publish"
   },
   "repository": {
     "type": "git",
