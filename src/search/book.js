@@ -1,6 +1,7 @@
 const _ = require('lodash')
-const request = require('./request')
-const favourites = require('./libraries/favourites')
+
+const request = require('../web/request')
+const favourites = require('../libraries/favourites')
 
 module.exports = {
   getAvailability,
@@ -43,7 +44,7 @@ function inFavouriteLibraries(availability) {
 
   console.log(`In favourite libraries: ${inFavourites.length}`)
   
-  return inFavouriteLibraries
+  return inFavourites
 }
 
 function interestingStatus(availability) {

@@ -1,6 +1,7 @@
-const browser = require('./browser')
-const select = require('./select')
 const _ = require('lodash')
+
+const browser = require('../web/browser')
+const select = require('../web/select')
 
 module.exports = {
   byTitle,
