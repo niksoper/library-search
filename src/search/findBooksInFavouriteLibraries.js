@@ -1,7 +1,6 @@
 module.exports = function findBooksInFavouriteLibraries(term) {
   if (!term) {
-    console.log('No search term!')
-    process.exit()
+    return Promise.reject('No search term!')
   }
 
   console.log('Loading...')
