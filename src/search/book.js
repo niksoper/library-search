@@ -23,16 +23,17 @@ function singleAvailability(bookUrl) {
   
   return request
     .getJson(fullUrl)
-    .then(response => (
-      response.extractorData.data[0].group.map(row => (
-        {
-          url: bookUrl,
-          library: row['Library value'][0].text,
-          status: row['Status value'][0].text,
-        }
-      ))
+    .then(response => {
+      const data = response.extractorData.data[0]
+      if (!data) return []
+      
+      return data.group.map(row => ({
+        url: bookUrl,
+        library: _.get(row, '[Library value][0].text'),
+        status: _.get(row, '[Status value][0].text'),
+      }))
       .filter(interestingStatus)
-    ))
+    })
 }
 
 function inFavouriteLibraries(availability) {
@@ -48,7 +49,8 @@ function inFavouriteLibraries(availability) {
 }
 
 function interestingStatus(availability) {
-  return onShelf(availability) || isDue(availability)
+  return hasLibraryAndStatus(availability) &&
+    (onShelf(availability) || isDue(availability))
 }
 
 function isOnShelf(availabilities) {
@@ -57,6 +59,12 @@ function isOnShelf(availabilities) {
   console.log(`On the shelf: ${shelved.length}`)
   
   return shelved
+}
+
+function hasLibraryAndStatus(availability) {
+  const has = availability.library && availability.status
+  if (!has) console.log('Skipped:', availability.url)
+  return has
 }
 
 function onShelf(availability) {
