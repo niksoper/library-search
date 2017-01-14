@@ -1,6 +1,6 @@
 {
   "name": "library-search",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Searches www.librarieswest.org.uk",
   "main": "src/index.js",
   "bin": {
