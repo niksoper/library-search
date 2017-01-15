@@ -5,6 +5,7 @@
   "main": "src/search/findBooksInFavouriteLibraries.js",
   "scripts": {
     "start": "node src/run.js",
+    "favourites": "node src/favourites.js",
     "patch": "npm version patch && npm publish"
   },
   "repository": {
