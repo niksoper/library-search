@@ -1,6 +1,6 @@
 {
   "name": "library-search",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Searches www.librarieswest.org.uk",
   "main": "src/search/findBooksInFavouriteLibraries.js",
   "scripts": {
