@@ -193,7 +193,7 @@ module.exports = [
   },
   {
     "name":"Moorland Road Library",
-    "favourite":false
+    "favourite":true
   },
   {
     "name":"Nailsea Library",
