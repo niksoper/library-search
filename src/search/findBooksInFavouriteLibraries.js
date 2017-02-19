@@ -1,3 +1,5 @@
+var Promise = require('q')
+
 module.exports = function findBooksInFavouriteLibraries(term) {
   if (!term) {
     return Promise.reject('No search term!')

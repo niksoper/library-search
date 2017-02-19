@@ -1,7 +1,7 @@
-const libraries = require('./all')
+var libraries = require('./all')
 
-const favourites = libraries
-  .filter(library => library.favourite)
-  .map(library => library.name)
+var favourites = libraries
+  .filter(function(library) { return library.favourite })
+  .map(function(library) { return library.name })
 
 module.exports = favourites

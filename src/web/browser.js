@@ -1,17 +1,17 @@
-const jsdom = require('jsdom')
+var jsdom = require('jsdom')
 
 module.exports = {
-  get,
+  get: get,
 }
 
 const scripts = []
 
 function get(url) {
-  return new Promise((resolve, reject) => {
+  return new Promise(function(resolve, reject) {
     jsdom.env(
       url,
       scripts, 
-      (err, window) => {
+      function(err, window) {
         if (err) reject(err)
         else resolve(window)
       }

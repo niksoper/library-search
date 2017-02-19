@@ -4,7 +4,7 @@
   "description": "Searches www.librarieswest.org.uk",
   "main": "src/search/findBooksInFavouriteLibraries.js",
   "scripts": {
-    "start": "node src/run.js",
+    "start": "phantomjs src/phantom-server.js",
     "patch": "npm version patch && npm publish"
   },
   "repository": {
@@ -20,6 +20,7 @@
   "dependencies": {
     "jsdom": "^9.9.1",
     "lodash": "^4.17.4",
+    "q": "^1.4.1",
     "request-promise": "^4.1.1"
   }
 }

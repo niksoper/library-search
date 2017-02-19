@@ -1,12 +1,12 @@
-const request = require('request-promise')
+var request = require('request-promise')
 
 module.exports = {
-  getJson
+  getJson: getJson
 }
 
 function getJson(uri) {
   return request({
-    uri,
+    uri: uri,
     json: true
   })
 }

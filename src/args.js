@@ -1,3 +1,3 @@
 module.exports = {
-  getTerm: () => process.argv.slice(2).join(' ')
+  getTerm: function() { return process.argv.slice(2).join(' ') }
 }
